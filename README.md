@@ -1,4 +1,4 @@
-I'm testing marimo out as a replacement for Google Opal.
+I'm testing [marimo](https://marimo.io/) as a replacement for Google Opal.
 
 This is the workflow I want to recreate:
 
@@ -36,3 +36,19 @@ This is the workflow I want to recreate:
 └──────────────────────────────────────┘
 ```
 
+## Prerequisites
+
+Uses [`google-genai`](https://googleapis.github.io/python-genai/) so you need to export your [Gemini API Key](https://aistudio.google.com/api-keys):
+
+```
+export GEMINI_API_KEY='your-api-key'
+```
+
+## Usage
+
+1. Start the app:
+```
+uv run marimo run podcast-summary-v2.py
+```
+
+2. Paste a transcript from your favorite podcast like [HiddenBrain](https://www.hiddenbrain.org/).
