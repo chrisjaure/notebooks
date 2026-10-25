@@ -1,5 +1,14 @@
 I'm testing [marimo](https://marimo.io/) as a replacement for Google Opal.
 
+I liked Opal because I could create multi-step workflows and evaluate the output between each step; that made debugging easy. It worked really well for my particular use case, but Google killed it without a proper replacement (skills are not a replacement!).
+
+Rather than switch to something heavy-weight and AI-specific, I decided to try out marimo (a modern jupyter notebook alternative) for these reasons:
+
+- The editor shows global variables for easy debugging between steps.
+- The editor has type hints which I need as a beginner.
+- It has no AI abstraction so I can use whatever I want. Free AI tools are good enough to help me code the basics that I can then extend to learn from.
+- It has an app mode like Opal.
+
 This is the workflow I want to recreate:
 
 ```
