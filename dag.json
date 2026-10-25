@@ -1,0 +1,378 @@
+{
+  "metadata": {
+    "visual": {
+      "presentation": {
+        "themes": {
+          "1fabcff6-0dd4-4691-9f78-aa94d9f0dfbc": {
+            "template": "basic",
+            "templateAdditionalOptions": {},
+            "palette": {
+              "primary": {
+                "0": "#000000",
+                "5": "#001418",
+                "10": "#001f26",
+                "15": "#002a32",
+                "20": "#003640",
+                "25": "#00424d",
+                "30": "#004e5c",
+                "35": "#005b6a",
+                "40": "#006879",
+                "50": "#008398",
+                "60": "#009fb8",
+                "70": "#2bbbd6",
+                "80": "#54d6f3",
+                "90": "#aaedff",
+                "95": "#d7f6ff",
+                "98": "#f0fbff",
+                "99": "#f8fdff",
+                "100": "#ffffff"
+              },
+              "secondary": {
+                "0": "#000000",
+                "5": "#001418",
+                "10": "#061f24",
+                "15": "#11292f",
+                "20": "#1d343a",
+                "25": "#283f45",
+                "30": "#334a50",
+                "35": "#3f565c",
+                "40": "#4b6269",
+                "50": "#637b82",
+                "60": "#7d959c",
+                "70": "#97afb6",
+                "80": "#b2cbd2",
+                "90": "#cee7ee",
+                "95": "#dcf5fd",
+                "98": "#f0fbff",
+                "99": "#f8fdff",
+                "100": "#ffffff"
+              },
+              "tertiary": "",
+              "error": {
+                "0": "#000000",
+                "5": "#2d0001",
+                "10": "#410002",
+                "15": "#540003",
+                "20": "#690005",
+                "25": "#7e0007",
+                "30": "#93000a",
+                "35": "#a80710",
+                "40": "#ba1a1a",
+                "50": "#de3730",
+                "60": "#ff5449",
+                "70": "#ff897d",
+                "80": "#ffb4ab",
+                "90": "#ffdad6",
+                "95": "#ffedea",
+                "98": "#fff8f7",
+                "99": "#fffbff",
+                "100": "#ffffff"
+              },
+              "neutral": {
+                "0": "#000000",
+                "5": "#0e1112",
+                "10": "#191c1d",
+                "15": "#232627",
+                "20": "#2e3132",
+                "25": "#393c3d",
+                "30": "#444748",
+                "35": "#505354",
+                "40": "#5c5f60",
+                "50": "#757779",
+                "60": "#8e9192",
+                "70": "#a9acad",
+                "80": "#c4c7c8",
+                "90": "#e1e3e4",
+                "95": "#eff1f2",
+                "98": "#f8fafa",
+                "99": "#fbfcfd",
+                "100": "#ffffff"
+              },
+              "neutralVariant": {
+                "0": "#000000",
+                "5": "#0a1215",
+                "10": "#141d1f",
+                "15": "#1f272a",
+                "20": "#293234",
+                "25": "#343d3f",
+                "30": "#3f484b",
+                "35": "#4b5457",
+                "40": "#576063",
+                "50": "#70797b",
+                "60": "#899295",
+                "70": "#a4adb0",
+                "80": "#bfc8cb",
+                "90": "#dbe4e7",
+                "95": "#e9f2f5",
+                "98": "#f2fbfe",
+                "99": "#f8fdff",
+                "100": "#ffffff"
+              }
+            },
+            "themeColors": {
+              "primaryColor": "",
+              "secondaryColor": "",
+              "backgroundColor": "",
+              "primaryTextColor": "",
+              "textColor": ""
+            },
+            "splashScreen": {
+              "storedData": {
+                "handle": "drive:/1pPegnknYSxzoZ5iO8UC0NDhoHXEm5FAH",
+                "mimeType": "image/png",
+                "contentLength": 1495000
+              }
+            }
+          }
+        },
+        "theme": "1fabcff6-0dd4-4691-9f78-aa94d9f0dfbc"
+      }
+    },
+    "intent": "input: article or podcast. output: image of infographic in a consistent human and playful style that summarizes the input's key concepts",
+    "revision_intents": [],
+    "raw_intent": "input: article or podcast. output: image of infographic in a consistent human and playful style that summarizes the input's key concepts",
+    "tags": [
+      "design",
+      "summary",
+      "visualization",
+      "productivity"
+    ],
+    "parameters": {}
+  },
+  "assets": {
+    "d0f8095d-e1ad-4e5c-8945-0480c095f271": {
+      "data": [
+        {
+          "parts": [
+            {
+              "text": "'Playful and human-styled' design aesthetic.\n\nThis style should be characterized by an organic, hand-drawn feel, featuring soft lines, rounded shapes, and a warm, vibrant color palette. Incorporate friendly and approachable typography along with whimsical, stylized illustrations of people and icons. The overall mood should be creative, inviting, and expressive, avoiding a cold or overly formal corporate look."
+            }
+          ],
+          "role": "user"
+        }
+      ],
+      "metadata": {
+        "title": "Styleguide",
+        "type": "content",
+        "visual": {
+          "x": 1400,
+          "y": -60
+        }
+      }
+    },
+    "e6305796-fe92-4434-8b4b-a890e3afd538": {
+      "data": [
+        {
+          "parts": [
+            {
+              "text": "## Core Insight\n<!--\nOne sentence: What is the fundamental truth about human nature discovered in this episode?\n-->\n\n## Ground Truth\n <!--\nOne or two sentences: Who was the researcher, what did they produce, and why was it important?  \n-->\n\n### Theory\n<!--\nIdentify and summarize the overarching cognitive systems, theories, or structural metaphors. Map out the system and how it explains human behavior beyond a single study. Use a structure that is appropriate for the theory. Strive for readability.\n-->\n\n### Data\n<!--\nIdentify the landmark studies, clinical research, or scientific frameworks that prove the core insight. Identify the distinct, named metrics, mechanisms, or behavioral principles discovered by the researchers (mirroring a study's key findings).\n\nFor each mechanism, use a main bullet point with bold text, followed by specific nested sub-bullets:\n- **Name of Mechanism/Core Concept**: Define the psychological mechanism, bias, or cultural phenomenon in one clear sentence using terminology from the podcast.\n\t- *The Evidence:* The laboratory experiment, historical event, data set, or real-world case study used to demonstrate it. Use validating details, quotes, and examples, not generic descriptions.\n\t- *The Insight:* The counter-intuitive takeaway, metric surge, or unexpected human behavior that shatters conventional wisdom.\n\nFor the name of the mechanism or core concept, use terms and language from the podcast. Don't fabricate names. Strive for readability.\n-->\n\n## Researcher's Lens\n<!--\nIf applicable, capture the personal story, confession, or realization the researcher shared about their own life. Two paragraphs:\n1. What was their personal struggle or behavioral loop?\n2. How did their own scientific framework help them realize they were falling prey to the phenomenon?\n-->\n## Key Quotes\n<!-- Find 2-3 key quotes that exemplify the main theme -->\n  > \n\n## Practical Tips\n<!-- How can I apply this to my life. 3-5 bullet points. -->\n\n## Resonance\n<!--\nFirst paragraph: How does this scientific data support, clarify, or re-frame my Stoic principles? Second paragraph: How does this scientific data support, clarify, or re-frame my personalist philosophical principles?\n\nBe objective.\n-->"
+            }
+          ],
+          "role": "user"
+        }
+      ],
+      "metadata": {
+        "title": "Output Template",
+        "type": "content",
+        "visual": {
+          "x": 660,
+          "y": -60
+        }
+      }
+    }
+  },
+  "title": "ConceptSketch",
+  "description": "Instantly transform your articles and podcasts into playful, beautiful summary infographics.",
+  "version": "0.0.1",
+  "nodes": [
+    {
+      "id": "node_step_summary_and_prompt",
+      "metadata": {
+        "title": "Synthesize Content",
+        "visual": {
+          "x": 1040,
+          "y": 380,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        },
+        "step_intent": "Analyze the source_content or the fetched_content to extract the core concepts and create a detailed visual description (prompt) for a human-styled, playful infographic. The output should be a structured summary and a descriptive instruction for the image generation model.",
+        "userModified": false
+      },
+      "type": "embed://a2/generate.bgl.json#module:main",
+      "configuration": {
+        "config$prompt": {
+          "parts": [
+            {
+              "text": "1. Objective: Analyze the provided content to create a detailed visual description for a playful, human-styled infographic.\n\n2. Output Format: Provide a descriptive prompt intended for an image generation tool. You are done when you have provided both the summary and the visual description.\n\n3. User Input / Context: \nFetched Content: {{\"type\":\"in\",\"path\":\"8c3e8519-9afd-4e55-9c0b-4974d39d5602\",\"title\":\"Summarize Podcast\"}}"
+            }
+          ],
+          "role": "user"
+        },
+        "generation-mode": "agent"
+      }
+    },
+    {
+      "id": "node_step_infographic_image",
+      "metadata": {
+        "title": "Design Infographic",
+        "visual": {
+          "x": 1400,
+          "y": 380,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        },
+        "step_intent": "Use the summary_and_prompt to generate a visual infographic that adheres to a 'playful and human-styled' design. Ensure the visual output encapsulates the key themes identified in the previous step.",
+        "userModified": true,
+        "expected_output": [
+          {
+            "description": "One tall infographic detailing summarized key themes",
+            "list": false,
+            "type": "image"
+          }
+        ]
+      },
+      "type": "embed://a2/generate.bgl.json#module:main",
+      "configuration": {
+        "config$prompt": {
+          "role": "user",
+          "parts": [
+            {
+              "text": "Generate a high-quality, detailed infographic that visually summarizes the key themes and concepts provided in the user input.\n\nNumber of Images: Generate exactly one single image.\n\nVisual Style: Follow `styleguide`\n\nContent and Composition: Create the infographic based on the specific details and instructions found in `content`. Translate the main ideas and summary points into a cohesive visual narrative. The layout should be logically organized, using decorative elements, soft-edged containers, and illustrative arrows to guide the viewer through the information. Each visual element should reinforce the core concepts mentioned in the input, ensuring the final output is both informative and visually engaging. The aspect ratio should be tall, not wide, to fit in a website that scrolls vertically.\n\nIMPORTANT: Generate exactly one image.\nIMPORTANT: Generate separate images.\n\n<content>{{\"type\":\"in\",\"path\":\"node_step_summary_and_prompt\",\"title\":\"Synthesize Content\"}}</content>\n<styleguide>{{\"type\":\"asset\",\"path\":\"d0f8095d-e1ad-4e5c-8945-0480c095f271\",\"title\":\"Styleguide\"}}</styleguide>"
+            }
+          ]
+        },
+        "generation-mode": "image-pro"
+      }
+    },
+    {
+      "id": "node_step_summary_infographic",
+      "metadata": {
+        "title": "Create Final Webpage",
+        "visual": {
+          "x": 1400,
+          "y": 660,
+          "collapsed": "expanded",
+          "outputHeight": 88
+        },
+        "step_intent": "Combine the summary text and the infographic_image into a single, cohesive HTML webpage that presents the information in a professional and visually appealing manner.",
+        "userModified": false
+      },
+      "type": "embed://a2/a2.bgl.json#module:render-outputs",
+      "configuration": {
+        "text": {
+          "parts": [
+            {
+              "text": "{{\"type\":\"in\",\"path\":\"node_step_infographic_image\",\"title\":\"Design Infographic\"}}\n\n{{\"type\":\"in\",\"path\":\"8c3e8519-9afd-4e55-9c0b-4974d39d5602\",\"title\":\"Summarize Podcast\"}}"
+            }
+          ],
+          "role": "user"
+        },
+        "b-system-instruction": {
+          "role": "user",
+          "parts": [
+            {
+              "text": "You are an AI Web Developer. Your task is to generate a single, self-contained HTML document for rendering in an iframe, based on user instructions and data.\n\n**Visual aesthetic:**\n    * Aesthetics are crucial. Make the page look amazing, especially on mobile.\n    * Respect any instructions on style, color palette, or reference examples provided by the user.\n    * **CRITICAL: Aim for premium, state-of-the-art designs. Avoid simple minimum viable products.**\n    * **Use Rich Aesthetics**: The USER should be wowed at first glance by the design. Use best practices in modern web design (e.g. vibrant colors, dark modes, glassmorphism, and dynamic animations) to create a stunning first impression. Failure to do this is UNACCEPTABLE.\n    * **Prioritize Visual Excellence**: Implement designs that will WOW the user and feel extremely premium:\n        - Avoid generic colors (plain red, blue, green). Use curated, harmonious color palettes (e.g., HSL tailored colors, sleek dark modes).\n        - Using modern typography (e.g., from Google Fonts like Inter, Roboto, or Outfit) instead of browser defaults.\n        - Use smooth gradients.\n        - Add subtle micro-animations for enhanced user experience.\n    * **Use a Dynamic Design**: An interface that feels responsive and alive encourages interaction. Achieve this with hover effects and interactive elements. Micro-animations, in particular, are highly effective for improving user engagement.\n    * **Thematic Specificity**: Do not just create a generic layout. Define a clear \"vibe\" or theme based on the content. Use specific aesthetic keywords (e.g., \"Glassmorphism\", \"Neobrutalism\", \"Minimalist\", \"Comic Book Style\") to guide the design.\n    * **Typography Hierarchy**: Explicitly import and use font pairings. Use a distinct Display Font for headers and a highly readable Body Font for text.\n    * **Readability**: Pay extra attention to readability. Ensure the text is always readable with sufficient contrast against the background. Choose fonts and colors that enhance legibility.\n\n**Design and Functionality:**\n    * **Component-Based Design**: Do not just dump text into blocks. Semanticize the content into distinct UI components.\n    * **Layout Dynamics**: Break the grid. Avoid strict, identical grid columns. Use asymmetrical layouts, Bento grids, or responsive flexbox layouts where some elements span full width to create visual interest and emphasize key content.\n    * **Tailwind Configuration**: Extend the Tailwind configuration within a `<script>` block to define custom font families and color palettes that match the theme.\n    * Thoroughly analyze the user's instructions to determine the desired type of webpage, application, or visualization. What are the key features, layouts, or functionality?\n    * Analyze any provided data to identify the most compelling layout or visualization of it. For example, if the user requests a visualization, select an appropriate chart type (bar, line, pie, scatter, etc.) to create the most insightful and visually compelling representation. Or if user instructions say `use a carousel format`, you should consider how to break the content and any media into different card components to display within the carousel.\n    * If requirements are underspecified, make reasonable assumptions to complete the design and functionality. Your goal is to deliver a working product with no placeholder content.\n    * Ensure the generated code is valid and functional. Return only the code, and open the HTML codeblock with the literal string \"```html\".\n    * The output must be a complete and valid HTML document with no placeholder content for the developer to fill in.\n\n**Libraries:**\n  Unless otherwise specified, use:\n    * Tailwind for CSS\n    * **CRITICAL: Use the Tailwind CDN from `https://cdn.tailwindcss.com`. Do NOT use `tailwind.min.css` or any other local Tailwind file. Always include Tailwind using: `<script src=\"https://cdn.tailwindcss.com\"></script>`**\n\n**Constraints:**\n  * **External Links:** You ARE allowed to generate external links (`<a href=\"...\">` and `window.open(...)`) to external websites (e.g. google.com, wikipedia.org) for user navigation.\n  * **NO External Embeds:** Do NOT embed any external resources (e.g. `<script src=\"...\">`, `<img src=\"...\">`, `<iframe src=\"...\">`, `<link href=\"...\">`) from external URLs. Content Security Policy (CSP) will block them.\n  * **Media Restriction:** ONLY use media URLs that are explicitly passed in the input. Do NOT generate or hallucinate any other media URLs (e.g. from placeholder sites or external CDNs).\n  * **Render All Media:** You MUST render ALL media (images, videos, audio) that are passed in. Do NOT skip or omit any provided media items. Every passed-in media URL must appear in the final HTML output.\n  * **Navigation Restriction:** Do NOT generate unneeded fake links or buttons to sub-pages (e.g. \"About\", \"Contact\", \"Learn More\") unless explicitly requested. Stick to the plan and the provided content.\n  * **Footer Restriction:** **NEVER** generate any footer content, including legal footers like \"All rights reserved\" or \"Copyright 2024\". [It is a violation of Google's policies to hallucinate legal footers.]\n"
+            }
+          ]
+        },
+        "p-render-mode": "Manual layout",
+        "b-render-model-name": "gemini-flash"
+      }
+    },
+    {
+      "id": "8c3e8519-9afd-4e55-9c0b-4974d39d5602",
+      "type": "embed://a2/generate.bgl.json#module:main",
+      "metadata": {
+        "title": "Summarize Podcast",
+        "visual": {
+          "x": 660,
+          "y": 380
+        },
+        "userModified": true,
+        "expected_output": [
+          {
+            "list": false,
+            "description": "Structured summary following specific psychological research template",
+            "type": "text"
+          }
+        ]
+      },
+      "configuration": {
+        "config$prompt": {
+          "parts": [
+            {
+              "text": "1. Objective: Summarize the content from `input` strictly following the structure of `template`.\n\n2. Tasks:\n- Analyze the retrieved content thoroughly.\n- Format the final output precisely according to the template provided below. Ensure every section of the template is addressed using details from the content.\n\n3. Output: Return the completed summary formatted according to the template.\n\n<input>{{\"type\":\"in\",\"path\":\"c2ce0769-4f2e-413e-8964-c2807710a246\",\"title\":\"User Input\"}}</input>\n<template>{{\"type\":\"asset\",\"path\":\"e6305796-fe92-4434-8b4b-a890e3afd538\",\"title\":\"Output Template\"}}</template>\n"
+            }
+          ],
+          "role": "user"
+        },
+        "generation-mode": "text-3-pro",
+        "b-system-instruction": {
+          "role": "user",
+          "parts": [
+            {
+              "text": "You are working as part of an AI system, so no chit-chat and no explaining what you're doing and why.\nDO NOT start with \"Okay\", or \"Alright\" or any preambles. Just the output, please."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2ce0769-4f2e-413e-8964-c2807710a246",
+      "type": "embed://a2/a2.bgl.json#21ee02e7-83fa-49d0-964c-0cab10eafc2c",
+      "metadata": {
+        "title": "User Input",
+        "visual": {
+          "x": 240,
+          "y": 380
+        },
+        "userModified": false
+      },
+      "configuration": {
+        "description": {
+          "role": "user",
+          "parts": [
+            {
+              "text": "Enter the transcript of the podcast."
+            }
+          ]
+        },
+        "p-modality": "Text",
+        "p-required": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "node_step_summary_and_prompt",
+      "to": "node_step_infographic_image",
+      "out": "context",
+      "in": "p-z-node_step_summary_and_prompt"
+    },
+    {
+      "from": "node_step_infographic_image",
+      "to": "node_step_summary_infographic",
+      "out": "context",
+      "in": "p-z-node_step_infographic_image"
+    },
+    {
+      "from": "8c3e8519-9afd-4e55-9c0b-4974d39d5602",
+      "to": "node_step_summary_infographic",
+      "out": "context",
+      "in": "p-z-8c3e8519-9afd-4e55-9c0b-4974d39d5602"
+    },
+    {
+      "from": "8c3e8519-9afd-4e55-9c0b-4974d39d5602",
+      "to": "node_step_summary_and_prompt",
+      "out": "context",
+      "in": "p-z-8c3e8519-9afd-4e55-9c0b-4974d39d5602"
+    },
+    {
+      "from": "c2ce0769-4f2e-413e-8964-c2807710a246",
+      "to": "8c3e8519-9afd-4e55-9c0b-4974d39d5602",
+      "out": "context",
+      "in": "p-z-c2ce0769-4f2e-413e-8964-c2807710a246"
+    }
+  ],
+  "url": "drive:/1xicd2oabQkrL0mwv2mAr-7qWq8QFcUYl"
+}
