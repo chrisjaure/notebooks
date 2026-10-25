@@ -12,27 +12,27 @@ This is the workflow I want to recreate:
 │   markdown research template)        │
 └──────────────────┬───────────────────┘
                    │
-                   ├──────────────────────────────────┐
-                   ▼                                  ▼
-┌──────────────────────────────────────┐  ┌──────────────────────────────────────┐
-│  Step 2: Synthesize Content          │  │                                      │
-│  (Extracts key concepts & crafts     │  │                                      │
-│   image generation prompt)           │  │                                      │
-└──────────────────┬───────────────────┘  │                                      │
-                   │                      │                                      │
-                   ▼                      │                                      │
-┌──────────────────────────────────────┐  │                                      │
-│  Step 3: Design Infographic          │  │                                      │
-│  (Generates tall 1-page visual based │  │                                      │
-│   on prompt & hand-drawn styleguide) │  │                                      │
-└──────────────────┬───────────────────┘  │                                      │
-                   │                      │                                      │
-                   └──────────────────┬───┘                                      │
-                                      ▼                                          ▼
-                         ┌────────────────────────────────────────────────────────┐
-                         │  Step 4: Output Results                                │
-                         │  (Combines summary text & infographic image into       │
-                         │   a page for copy/pasting into notes)                  │
-                         └────────────────────────────────────────────────────────┘
+                   ├──────────────────────┐
+                   ▼                      │
+┌──────────────────────────────────────┐  │
+│  Step 2: Synthesize Content          │  │
+│  (Extracts key concepts & crafts     │  │
+│   image generation prompt)           │  │
+└──────────────────┬───────────────────┘  │
+                   │                      │
+                   ▼                      │
+┌──────────────────────────────────────┐  │
+│  Step 3: Design Infographic          │  │
+│  (Generates tall 1-page visual based │  │
+│   on prompt & hand-drawn styleguide) │  │
+└──────────────────┬───────────────────┘  │
+                   │                      │
+                   │   ┌──────────────────┘
+                   ▼   ▼               
+┌──────────────────────────────────────┐
+│  Step 4: Output Results              │
+│  (Combines summary text & infographic│
+│   for copy/pasting into notes)       │
+└──────────────────────────────────────┘
 ```
 
