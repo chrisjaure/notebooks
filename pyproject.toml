@@ -7,3 +7,8 @@ dependencies = [
     "marimo>=0.25.2",
     "pillow>=13.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.2",
+]
