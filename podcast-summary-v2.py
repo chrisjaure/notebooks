@@ -25,6 +25,7 @@ def _(mo):
 
     Instantly transform your articles and podcasts into structured summaries and playful infographics.
     """)
+    return
 
 
 @app.cell
@@ -189,6 +190,7 @@ def _(generated_image, mo, summary_text):
     mo.vstack(
         [mo.md("# Output Summary"), mo.image(src=generated_image), mo.md(summary_text)]
     )
+    return
 
 
 if __name__ == "__main__":
