@@ -9,6 +9,8 @@ Rather than switch to something heavy-weight and AI-specific, I decided to try o
 - It has no AI abstraction so I can use whatever I want. Free AI tools are good enough to help me code the basics that I can then extend to learn from.
 - It has an app mode like Opal.
 
+I'm also using this as an opportunity to learn more python. Normally I'd pick something in Typescript, but the marimo editor provides good contextual help so I can discover the generally right thing to do without much context switching.
+
 This is the workflow I want to recreate:
 
 ```
