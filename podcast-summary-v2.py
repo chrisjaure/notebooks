@@ -6,8 +6,8 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
-    import os
     import io
+
     import marimo as mo
     from google import genai
     from google.genai import types
@@ -25,7 +25,6 @@ def _(mo):
 
     Instantly transform your articles and podcasts into structured summaries and playful infographics.
     """)
-    return
 
 
 @app.cell
@@ -35,9 +34,8 @@ def node1(mo):
         label="Podcast Transcript / Article Content",
         placeholder="Paste your transcript or article text here...",
         full_width=True,
-        rows=20
+        rows=20,
     ).form(submit_button_label="Generate Infographic & Webpage")
-    transcript_input
     return (transcript_input,)
 
 
@@ -123,7 +121,7 @@ def node2(client, mo, output_template, transcript_input, types):
                 system_instruction="You are an expert research assistant working as part of an AI system. Provide direct structured output without preamble.",
                 thinking_config=types.ThinkingConfig(
                     thinking_level=types.ThinkingLevel.HIGH
-                )
+                ),
             ),
         )
         summary_text = _summary_response.text
@@ -137,10 +135,10 @@ def node3(client, mo, summary_text):
         _prompt_response = client.models.generate_content(
             model="gemini-flash-latest",
             contents=f"""
-            OBJECTIVE: Analyze the provided content to create a detailed visual description for a playful, human-styled infographic.
+            OBJECTIVE: Analyze `content` to create a detailed visual description for a playful, human-styled infographic.
             OUTPUT FORMAT: Provide a descriptive prompt intended for an image generation tool. You are done when you have provided both the summary and the visual description.
 
-            Summary text: {summary_text}
+            <content>{summary_text}</content>
             """,
         )
         visual_prompt = _prompt_response.text
@@ -150,13 +148,11 @@ def node3(client, mo, summary_text):
 @app.cell
 def node4(Image, client, io, mo, styleguide, types, visual_prompt):
     # Node 4: Design Infographic
-    with mo.status.spinner(
-        title="Step 3: Designing Infographic..."
-    ):
+    with mo.status.spinner(title="Step 3: Designing Infographic..."):
         _image_result = client.models.generate_content(
             model="gemini-3-pro-image",
             contents=f"""
-            OBJECTIVE: Generate a high-quality, detailed infographic that visually summarizes the key themes and concepts provided in the user input.
+            OBJECTIVE: Generate a high-quality, detailed infographic that visually summarizes the key themes and concepts provided in `visual_prompt`.
             CONSTRAINTS:
             - Number of Images: Generate exactly one single image.
             - Visual Style: Follow `styleguide`
@@ -175,7 +171,7 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt):
             config=types.GenerateContentConfig(
                 response_modalities=[types.Modality.IMAGE],
                 image_config=types.ImageConfig(
-                    aspect_ratio='9:16',
+                    aspect_ratio="9:16",
                 ),
             ),
         )
@@ -190,12 +186,9 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt):
 
 @app.cell
 def _(generated_image, mo, summary_text):
-    mo.vstack([
-        mo.md("# Output Summary"),
-        mo.image(src=generated_image),
-        mo.md(summary_text)
-    ])
-    return
+    mo.vstack(
+        [mo.md("# Output Summary"), mo.image(src=generated_image), mo.md(summary_text)]
+    )
 
 
 if __name__ == "__main__":
