@@ -29,7 +29,7 @@ def _(mo):
 
 
 @app.cell
-def _(mo):
+def node1(mo):
     # Node 1: User Input
     transcript_input = mo.ui.text_area(
         label="Podcast Transcript / Article Content",
@@ -103,7 +103,7 @@ def _():
 
 
 @app.cell
-def _(client, mo, output_template, transcript_input, types):
+def node2(client, mo, output_template, transcript_input, types):
     # Node 2: Summarize Podcast (gemini-2.5-pro / text-3-pro)
     mo.stop(not transcript_input.value)
 
@@ -128,8 +128,8 @@ def _(client, mo, output_template, transcript_input, types):
 
 
 @app.cell
-def _(client, mo, summary_text):
-    # Node 3: Synthesize Content (gemini-2.5-flash / agent)
+def node3(client, mo, summary_text):
+    # Node 3: Synthesize Content
     with mo.status.spinner(title="Step 2: Synthesizing visual prompt..."):
         _prompt_response = client.models.generate_content(
             model="gemini-flash-latest",
@@ -145,8 +145,8 @@ def _(client, mo, summary_text):
 
 
 @app.cell
-def _(Image, client, io, mo, styleguide, types, visual_prompt):
-    # Node 4: Design Infographic (imagen-3.0-generate-002)
+def node4(Image, client, io, mo, styleguide, types, visual_prompt):
+    # Node 4: Design Infographic
     with mo.status.spinner(
         title="Step 3: Designing Infographic..."
     ):
@@ -187,9 +187,11 @@ def _(Image, client, io, mo, styleguide, types, visual_prompt):
 
 @app.cell
 def _(generated_image, mo, summary_text):
-    mo.md("# Output Summary")
-    mo.output.append(mo.image(src=generated_image))
-    mo.output.append(mo.md(summary_text))
+    mo.vstack([
+        mo.md("# Output Summary"),
+        mo.image(src=generated_image),
+        mo.md(summary_text)
+    ])
     return
 
 
