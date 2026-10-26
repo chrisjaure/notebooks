@@ -104,23 +104,26 @@ def _():
 
 @app.cell
 def node2(client, mo, output_template, transcript_input, types):
-    # Node 2: Summarize Podcast (gemini-2.5-pro / text-3-pro)
+    # Node 2: Summarize Podcast
     mo.stop(not transcript_input.value)
 
     with mo.status.spinner(title="Step 1: Summarizing content..."):
         _summary_response = client.models.generate_content(
             model="gemini-pro-latest",
             contents=f"""
-            OBJECTIVE: Summarize the content from input strictly following the structure of template.
+            OBJECTIVE: Analyze and summarize `input` strictly following the structure of template.
             TASKS:
-            - Analyze the retrieved content thoroughly.
+            - Analyze `input` thoroughly.
             - Format the final output precisely according to the template provided below. Ensure every section of the template is addressed using details from the content.
 
             <input>{transcript_input.value}</input>
             <template>{output_template}</template>
             """,
             config=types.GenerateContentConfig(
-                system_instruction="You are working as part of an AI system. Provide direct structured output without preamble."
+                system_instruction="You are an expert research assistant working as part of an AI system. Provide direct structured output without preamble.",
+                thinking_config=types.ThinkingConfig(
+                    thinking_level=types.ThinkingLevel.HIGH
+                )
             ),
         )
         summary_text = _summary_response.text
@@ -170,7 +173,7 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt):
             <styleguide>{styleguide}</styleguide>
             """,
             config=types.GenerateContentConfig(
-                response_modalities=['IMAGE'],
+                response_modalities=[types.Modality.IMAGE],
                 image_config=types.ImageConfig(
                     aspect_ratio='9:16',
                 ),
