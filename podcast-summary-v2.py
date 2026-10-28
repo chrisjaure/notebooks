@@ -103,9 +103,14 @@ def _():
     styleguide = """
     'Playful and human-styled' design aesthetic.
 
+    A whimsical, hand-drawn educational infographic poster on textured, cream-colored recycled paper, blending ink linework, colored pencil textures, and soft watercolor washes. The design has a warm, human, playful aesthetic with clean visual hierarchy, hand-lettered typography, dashed connector lines, and charming character doodles.
+
     This style should be characterized by an organic, hand-drawn feel, featuring soft lines, rounded shapes, and a warm, vibrant color palette. Incorporate friendly and approachable typography along with whimsical, stylized illustrations of people and icons. The overall mood should be creative, inviting, and expressive, avoiding a cold or overly formal corporate look.
 
-    Aspect ratio: 1:1
+    **Overall Aesthetic & Mood:**
+    Organic, tactile, hand-drawn editorial illustration; slight watercolor blooms, visible pencil grain, imperfect ink outlines, approachable and inspiring tone, high legibility with balanced negative space.
+
+    Aspect ratio=1:1
     """
     return output_template, styleguide
 
@@ -151,7 +156,7 @@ def _(mo, summary_text):
 
 
 @app.cell
-def node3(client, mo, summary_text_edited):
+def node3(client, mo, styleguide, summary_text_edited):
     # Node 3: Synthesize Content
     mo.stop(not summary_text_edited.value)
 
@@ -160,9 +165,16 @@ def node3(client, mo, summary_text_edited):
             model="gemini-flash-latest",
             contents=f"""
             OBJECTIVE: Analyze `content` to create a detailed visual description for a playful, human-styled infographic.
+        
+            CONSTRAINTS:
+            - Use visual metaphors mentioned in the content.
+            - Don't use specific case studies.
+            - Follow `styleguide`.
+        
             OUTPUT FORMAT: Provide a descriptive prompt intended for an image generation tool. You are done when you have provided both the summary and the visual description.
 
             <content>{summary_text_edited.value}</content>
+            <styleguide>{styleguide}</styleguide>
             """,
         )
         visual_prompt = _prompt_response.text
@@ -179,7 +191,7 @@ def _(mo, visual_prompt):
 
 
 @app.cell
-def node4(Image, client, io, mo, styleguide, types, visual_prompt_edited):
+def node4(Image, client, io, mo, types, visual_prompt_edited):
     # Node 4: Design Infographic
     mo.stop(not visual_prompt_edited.value)
 
@@ -188,9 +200,9 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt_edited):
             model="gemini-3-pro-image",
             contents=f"""
             OBJECTIVE: Generate a high-quality, detailed infographic that visually summarizes the key themes and concepts provided in `visual_prompt`.
+
             CONSTRAINTS:
             - Number of Images: Exactly one
-            - Visual Style: Follow `styleguide`
 
             COMPOSITION & STYLE:
             - Create the infographic based on the specific details and instructions found in `visual_prompt`.
@@ -200,7 +212,6 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt_edited):
 
             IMPORTANT: Generate exactly one image.
             <visual_prompt>{visual_prompt_edited.value}</visual_prompt>
-            <styleguide>{styleguide}</styleguide>
             """,
             config=types.GenerateContentConfig(
                 response_modalities=[types.Modality.IMAGE],
