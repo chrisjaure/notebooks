@@ -35,9 +35,16 @@ def node1(mo):
         label="Podcast Transcript / Article Content",
         placeholder="Paste your transcript or article text here...",
         full_width=True,
-        rows=20,
-    ).form(submit_button_label="Generate Infographic & Webpage")
-    return (transcript_input,)
+        rows=15,
+    ).form(submit_button_label="Generate Summary & Infographic")
+    summary_input = mo.ui.text_area(
+        label="Summary",
+        placeholder="Paste your summary text here...",
+        full_width=True,
+        rows=15,
+    ).form(submit_button_label="Generate Infographic")
+    mo.ui.tabs({"I have a transcript": transcript_input, "I have a summary": summary_input})
+    return summary_input, transcript_input
 
 
 @app.cell
@@ -97,41 +104,57 @@ def _():
     'Playful and human-styled' design aesthetic.
 
     This style should be characterized by an organic, hand-drawn feel, featuring soft lines, rounded shapes, and a warm, vibrant color palette. Incorporate friendly and approachable typography along with whimsical, stylized illustrations of people and icons. The overall mood should be creative, inviting, and expressive, avoiding a cold or overly formal corporate look.
+
+    Aspect ratio: 1:1
     """
     return output_template, styleguide
 
 
 @app.cell
-def node2(client, mo, output_template, transcript_input, types):
+def node2(client, mo, output_template, summary_input, transcript_input, types):
     # Node 2: Summarize Podcast
-    mo.stop(not transcript_input.value)
-
-    with mo.status.spinner(title="Step 1: Summarizing content..."):
-        _summary_response = client.models.generate_content(
-            model="gemini-pro-latest",
-            contents=f"""
-            OBJECTIVE: Analyze and summarize `input` strictly following the structure of template.
-            TASKS:
-            - Analyze `input` thoroughly.
-            - Format the final output precisely according to the template provided below. Ensure every section of the template is addressed using details from the content.
-
-            <input>{transcript_input.value}</input>
-            <template>{output_template}</template>
-            """,
-            config=types.GenerateContentConfig(
-                system_instruction="You are an expert research assistant working as part of an AI system. Provide direct structured output without preamble.",
-                thinking_config=types.ThinkingConfig(
-                    thinking_level=types.ThinkingLevel.HIGH
+    if transcript_input.value:
+        with mo.status.spinner(title="Step 1: Summarizing content..."):
+            _summary_response = client.models.generate_content(
+                model="gemini-pro-latest",
+                contents=f"""
+                OBJECTIVE: Analyze and summarize `input` strictly following the structure of template.
+                TASKS:
+                - Analyze `input` thoroughly.
+                - Format the final output precisely according to the template provided below. Ensure every section of the template is addressed using details from the content.
+    
+                <input>{transcript_input.value}</input>
+                <template>{output_template}</template>
+                """,
+                config=types.GenerateContentConfig(
+                    system_instruction="You are an expert research assistant working as part of an AI system. Provide direct structured output without preamble.",
+                    thinking_config=types.ThinkingConfig(
+                        thinking_level=types.ThinkingLevel.HIGH
+                    ),
                 ),
-            ),
-        )
-        summary_text = _summary_response.text
+            )
+            summary_text = _summary_response.text
+    elif summary_input.value:
+        summary_text = summary_input.value
+    else:
+        mo.stop(True)
     return (summary_text,)
 
 
 @app.cell
-def node3(client, mo, summary_text):
+def _(mo, summary_text):
+    summary_text_edited = mo.ui.code_editor(
+        language="markdown", value=summary_text, label="Summary Text"
+    ).form(submit_button_label="Create Visual Prompt")
+    summary_text_edited
+    return (summary_text_edited,)
+
+
+@app.cell
+def node3(client, mo, summary_text_edited):
     # Node 3: Synthesize Content
+    mo.stop(not summary_text_edited.value)
+
     with mo.status.spinner(title="Step 2: Synthesizing visual prompt..."):
         _prompt_response = client.models.generate_content(
             model="gemini-flash-latest",
@@ -139,7 +162,7 @@ def node3(client, mo, summary_text):
             OBJECTIVE: Analyze `content` to create a detailed visual description for a playful, human-styled infographic.
             OUTPUT FORMAT: Provide a descriptive prompt intended for an image generation tool. You are done when you have provided both the summary and the visual description.
 
-            <content>{summary_text}</content>
+            <content>{summary_text_edited.value}</content>
             """,
         )
         visual_prompt = _prompt_response.text
@@ -147,17 +170,27 @@ def node3(client, mo, summary_text):
 
 
 @app.cell
-def node4(Image, client, io, mo, styleguide, types, visual_prompt):
+def _(mo, visual_prompt):
+    visual_prompt_edited = mo.ui.code_editor(
+        language="markdown", value=visual_prompt, label="Visual Prompt"
+    ).form(submit_button_label="Create Infographic")
+    visual_prompt_edited
+    return (visual_prompt_edited,)
+
+
+@app.cell
+def node4(Image, client, io, mo, styleguide, types, visual_prompt_edited):
     # Node 4: Design Infographic
+    mo.stop(not visual_prompt_edited.value)
+
     with mo.status.spinner(title="Step 3: Designing Infographic..."):
         _image_result = client.models.generate_content(
             model="gemini-3-pro-image",
             contents=f"""
             OBJECTIVE: Generate a high-quality, detailed infographic that visually summarizes the key themes and concepts provided in `visual_prompt`.
             CONSTRAINTS:
-            - Number of Images: Generate exactly one single image.
+            - Number of Images: Exactly one
             - Visual Style: Follow `styleguide`
-            - Aspect ratio: 9:16
 
             COMPOSITION & STYLE:
             - Create the infographic based on the specific details and instructions found in `visual_prompt`.
@@ -166,13 +199,13 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt):
             - Each visual element should reinforce the core concepts mentioned in the visual prompt, ensuring the final output is both informative and visually engaging.
 
             IMPORTANT: Generate exactly one image.
-            <visual_prompt>{visual_prompt}</visual_prompt>
+            <visual_prompt>{visual_prompt_edited.value}</visual_prompt>
             <styleguide>{styleguide}</styleguide>
             """,
             config=types.GenerateContentConfig(
                 response_modalities=[types.Modality.IMAGE],
                 image_config=types.ImageConfig(
-                    aspect_ratio="9:16",
+                    aspect_ratio="1:1",
                 ),
             ),
         )
@@ -186,9 +219,9 @@ def node4(Image, client, io, mo, styleguide, types, visual_prompt):
 
 
 @app.cell
-def _(generated_image, mo, summary_text):
+def _(generated_image, mo, summary_text_edited):
     mo.vstack(
-        [mo.md("# Output Summary"), mo.image(src=generated_image), mo.md(summary_text)]
+        [mo.md("# Output Summary"), mo.image(src=generated_image), mo.md(summary_text_edited.value)]
     )
     return
 
