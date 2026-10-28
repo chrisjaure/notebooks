@@ -43,7 +43,12 @@ def node1(mo):
         full_width=True,
         rows=15,
     ).form(submit_button_label="Generate Infographic")
-    mo.ui.tabs({"I have a transcript": transcript_input, "I have a summary": summary_input})
+    mo.ui.tabs(
+        {
+            "I have a transcript": transcript_input,
+            "I have a summary": summary_input,
+        }
+    )
     return summary_input, transcript_input
 
 
@@ -127,7 +132,7 @@ def node2(client, mo, output_template, summary_input, transcript_input, types):
                 TASKS:
                 - Analyze `input` thoroughly.
                 - Format the final output precisely according to the template provided below. Ensure every section of the template is addressed using details from the content.
-    
+
                 <input>{transcript_input.value}</input>
                 <template>{output_template}</template>
                 """,
@@ -165,12 +170,12 @@ def node3(client, mo, styleguide, summary_text_edited):
             model="gemini-flash-latest",
             contents=f"""
             OBJECTIVE: Analyze `content` to create a detailed visual description for a playful, human-styled infographic.
-        
+
             CONSTRAINTS:
             - Use visual metaphors mentioned in the content.
             - Don't use specific case studies.
             - Follow `styleguide`.
-        
+
             OUTPUT FORMAT: Provide a descriptive prompt intended for an image generation tool. You are done when you have provided both the summary and the visual description.
 
             <content>{summary_text_edited.value}</content>
@@ -224,7 +229,9 @@ def node4(Image, client, io, mo, types, visual_prompt_edited):
         generated_image = None
         for _part in _image_result.parts:
             if _part.inline_data:
-                generated_image = Image.open(io.BytesIO(_part.as_image().image_bytes))
+                generated_image = Image.open(
+                    io.BytesIO(_part.as_image().image_bytes)
+                )
                 break
     return (generated_image,)
 
@@ -232,7 +239,11 @@ def node4(Image, client, io, mo, types, visual_prompt_edited):
 @app.cell
 def _(generated_image, mo, summary_text_edited):
     mo.vstack(
-        [mo.md("# Output Summary"), mo.image(src=generated_image), mo.md(summary_text_edited.value)]
+        [
+            mo.md("# Output Summary"),
+            mo.image(src=generated_image),
+            mo.md(summary_text_edited.value),
+        ]
     )
     return
 
