@@ -68,7 +68,7 @@ def _():
 
     ### Theory
     <!--
-    Identify and summarize the overarching cognitive systems, theories, or structural metaphors. Map out the system and how it explains human behavior beyond a single study. Use a structure that is appropriate for the theory. Strive for readability.
+    Identify and summarize the overarching cognitive systems, theories, or structural metaphors. Map out the system and how it explains human behavior beyond a single study. Use a structure that is appropriate for the theory. Strive for readability by including focused and relevant information that a human reader can quickly understand.
     -->
 
     ### Data
@@ -115,6 +115,9 @@ def _():
     **Overall Aesthetic & Mood:**
     Organic, tactile, hand-drawn editorial illustration; slight watercolor blooms, visible pencil grain, imperfect ink outlines, approachable and inspiring tone, high legibility with balanced negative space.
 
+    **Special Considerations:**
+    Imagine the reader's eye movements. The flow should be intuitive and your illustration should not contain unnecessary or confusing connector lines. 
+
     Aspect ratio=1:1
     """
     return output_template, styleguide
@@ -126,12 +129,16 @@ def node2(client, mo, output_template, summary_input, transcript_input, types):
     if transcript_input.value:
         with mo.status.spinner(title="Step 1: Summarizing content..."):
             _summary_response = client.models.generate_content(
-                model="gemini-pro-latest",
+                model="gemini-4-argon",
                 contents=f"""
                 OBJECTIVE: Analyze and summarize `input` strictly following the structure of template.
+            
                 TASKS:
                 - Analyze `input` thoroughly.
                 - Format the final output precisely according to the template provided below. Ensure every section of the template is addressed using details from the content.
+            
+                CONSTRAINTS:
+                - Use em-dashes sparingly (one every 300 words max).
 
                 <input>{transcript_input.value}</input>
                 <template>{output_template}</template>
