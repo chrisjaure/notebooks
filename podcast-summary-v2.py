@@ -129,7 +129,7 @@ def node2(client, mo, output_template, summary_input, transcript_input, types):
     if transcript_input.value:
         with mo.status.spinner(title="Step 1: Summarizing content..."):
             _summary_response = client.models.generate_content(
-                model="gemini-4-argon",
+                model="gemini-4-hydrogen",
                 contents=f"""
                 OBJECTIVE: Analyze and summarize `input` strictly following the structure of template.
             
@@ -236,9 +236,7 @@ def node4(Image, client, io, mo, types, visual_prompt_edited):
         generated_image = None
         for _part in _image_result.parts:
             if _part.inline_data:
-                generated_image = Image.open(
-                    io.BytesIO(_part.as_image().image_bytes)
-                )
+                generated_image = Image.open(io.BytesIO(_part.as_image().image_bytes))
                 break
     return (generated_image,)
 
